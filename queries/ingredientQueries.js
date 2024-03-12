@@ -1,4 +1,4 @@
-const { DOMAIN } = require('../constants'); 
+const { DOMAIN } = require('../constants');
 const readlineSync = require('readline-sync');
 const { getParams, getItems } = require('../utilities/getParams');
 
@@ -13,6 +13,15 @@ const getIngredient = () => {
         })
         .catch(err => console.error(err));
 };
+
+const getAllIngredients = () => {
+    fetch(`${DOMAIN}/ingredients/all`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(err => console.error(err));
+}
 
 const createIngredient = () => {
     let requestBody = getParams(['Name', 'Expiration', 'CurrentAmount', 'Minimum Amount']);
@@ -62,6 +71,7 @@ const getExpiredIngredients = () => {
 
 module.exports = {
     getIngredient,
+    getAllIngredients,
     createIngredient,
     getExpiredIngredients,
     updateIngredient,

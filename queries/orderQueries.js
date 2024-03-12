@@ -1,4 +1,4 @@
-const { DOMAIN } = require('../constants'); 
+const { DOMAIN } = require('../constants');
 const readlineSync = require('readline-sync');
 const { getParams, getItems } = require('../utilities/getParams');
 
@@ -11,11 +11,20 @@ const getOrder = () => {
         .catch(err => console.error(err));
 };
 
+const getAllOrders = () => {
+    fetch(`${DOMAIN}/orders/all`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(err => console.error(err));
+}
+
 const createOrder = () => {
     let requestBody = getParams(['OrderNumber', 'Email']);
     console.log('Enter SKU as Item and Quantity as value');
     const Items = getItems();
-    requestBody = {...requestBody, "Items": Items };
+    requestBody = { ...requestBody, "Items": Items };
     console.log(requestBody);
     fetch(`${DOMAIN}/orders`, {
         method: 'POST',
@@ -63,6 +72,7 @@ const updateOrder = () => {
 
 module.exports = {
     getOrder,
+    getAllOrders,
     createOrder,
     getActiveOrders,
     deleteOrder,

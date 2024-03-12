@@ -1,4 +1,4 @@
-const { DOMAIN } = require('../constants'); 
+const { DOMAIN } = require('../constants');
 const readlineSync = require('readline-sync');
 const { getParams, getItems } = require('../utilities/getParams');
 
@@ -11,11 +11,20 @@ const getMeal = () => {
         .catch(err => console.error(err));
 };
 
+const getAllMeals = () => {
+    fetch(`${DOMAIN}/meals/all`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(err => console.error(err));
+}
+
 const createMeal = () => {
     let requestBody = getParams(['Sku', 'Name', "Desc", "Diet"]);
     console.log('Enter IngredientName as Item and Quantity as value');
     const Items = getItems();
-    requestBody = {...requestBody, "Ingredients": Items };
+    requestBody = { ...requestBody, "Ingredients": Items };
     console.log(requestBody);
     fetch(`${DOMAIN}/meals`, {
         method: 'POST',
@@ -64,6 +73,7 @@ const getPopularMeals = () => {
 
 module.exports = {
     getMeal,
+    getAllMeals,
     createMeal,
     getPopularMeals,
     updateMeal,

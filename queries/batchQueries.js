@@ -1,4 +1,4 @@
-const { DOMAIN } = require('../constants'); 
+const { DOMAIN } = require('../constants');
 const readlineSync = require('readline-sync');
 const { getParams, getItems } = require('../utilities/getParams');
 
@@ -15,11 +15,20 @@ const getBatch = () => {
         .catch(err => console.error(err));
 };
 
+const getAllBatches = () => {
+    fetch(`${DOMAIN}/batch/all`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(err => console.error(err));
+}
+
 const createBatch = () => {
     let requestBody = getParams(['BatchNumber', 'VendorName']);
     console.log('Enter IngredientName as Item and Quantity as value');
     const Items = getItems();
-    requestBody = {...requestBody, "Items": Items };
+    requestBody = { ...requestBody, "Items": Items };
     console.log(requestBody);
     fetch(`${DOMAIN}/batch`, {
         method: 'POST',
@@ -68,6 +77,7 @@ const getBatchesInInterval = () => {
 
 module.exports = {
     getBatch,
+    getAllBatches,
     createBatch,
     updateBatch,
     deleteBatch,

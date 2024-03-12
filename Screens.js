@@ -1,23 +1,27 @@
 const Screen = require('./Screen');
 
 const {
-    getCustomer, 
+    getCustomer,
     createCustomer,
     updateCustomer,
     deleteCustomer,
     customersInStateOf,
-    createBatch, 
-    getBatch, 
-    createOrder, 
-    getOrder, 
-    getActiveOrders, 
-    getMeal, 
-    createMeal, 
-    getPopularMeals, 
-    updateBatch, 
-    deleteBatch, 
-    getIngredient, 
-    createIngredient, 
+    createBatch,
+    getBatch,
+    getAllBatches,
+    createOrder,
+    getOrder,
+    getAllOrders,
+    getActiveOrders,
+    getMeal,
+    getAllMeals,
+    createMeal,
+    getPopularMeals,
+    updateBatch,
+    deleteBatch,
+    getIngredient,
+    getAllIngredients,
+    createIngredient,
     getExpiredIngredients,
     updateMeal,
     deleteMeal,
@@ -44,7 +48,7 @@ const GetBatchFunction = new Screen('Get a Batch', null, getBatch);
 const UpdateBatchFunction = new Screen('Update a Batch', null, updateBatch);
 const CreateBatchFunction = new Screen('Create a Batch', null, createBatch);
 const DeleteBatchFunction = new Screen('Delete a Batch', null, deleteBatch);
-const BatchesCRUDMenu = new Screen('Batches', [CreateBatchFunction, GetBatchFunction, UpdateBatchFunction,DeleteBatchFunction]);
+const BatchesCRUDMenu = new Screen('Batches', [CreateBatchFunction, GetBatchFunction, UpdateBatchFunction, DeleteBatchFunction]);
 
 // Orders
 const GetOrderFunction = new Screen('Get a Order', null, getOrder);
@@ -77,19 +81,23 @@ const CustomersHLMenu = new Screen('Customers', [CustomersInStateOfFunction, Get
 
 // Batches
 const GetBatchesInIntervalFunction = new Screen('Get Batches in an Interval', null, getBatchesInInterval);
-const BatchesHLMenu = new Screen('Batches', [GetBatchesInIntervalFunction]);
+const GetAllBatchesFunction = new Screen('Get All Batches', null, getAllBatches);
+const BatchesHLMenu = new Screen('Batches', [GetBatchesInIntervalFunction, GetAllBatchesFunction]);
 
 // MealKits
 const GetPopularMealsFunction = new Screen('Get Popular Meals', null, getPopularMeals);
-const MealsHLMenu = new Screen('MealKits', [GetPopularMealsFunction]);
+const GetAllMealsFunction = new Screen('Get All Meals', null, getAllMeals);
+const MealsHLMenu = new Screen('MealKits', [GetPopularMealsFunction, GetAllMealsFunction]);
 
 // Orders
-const GetActiveOrdersFunction = new Screen('Get Active Orders', null, getActiveOrders);  
-const OrdersHLMenu = new Screen('Orders', [GetActiveOrdersFunction]);
+const GetActiveOrdersFunction = new Screen('Get Active Orders', null, getActiveOrders);
+const GetAllOrdersFunction = new Screen('Get All Orders', null, getAllOrders);
+const OrdersHLMenu = new Screen('Orders', [GetActiveOrdersFunction, GetAllOrdersFunction]);
 
 // Ingredients
 const getExpiredIngredientsFunction = new Screen('Get Expired Ingredients', null, getExpiredIngredients);
-const IngredientsHLMenu = new Screen('Ingredients', [getExpiredIngredientsFunction])
+const GetAllIngredientsFunction = new Screen('Get all Ingredients', null, getAllIngredients);
+const IngredientsHLMenu = new Screen('Ingredients', [getExpiredIngredientsFunction, GetAllIngredientsFunction]);
 
 // Sub Menus
 const CRUDMenu = new Screen('CRUD Menu', [CustomersCRUDMenu, BatchesCRUDMenu, OrderCRUDMenu, MealsCRUDMenu, IngredientsCRUDMenu]);

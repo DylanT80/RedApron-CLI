@@ -9,6 +9,7 @@ const {
 
 const {
     getBatch,
+    getAllBatches,
     createBatch,
     updateBatch,
     deleteBatch,
@@ -17,6 +18,7 @@ const {
 
 const {
     getOrder,
+    getAllOrders,
     createOrder,
     getActiveOrders,
     updateOrder,
@@ -25,6 +27,7 @@ const {
 
 const {
     getMeal,
+    getAllMeals,
     createMeal,
     getPopularMeals,
     updateMeal,
@@ -33,6 +36,7 @@ const {
 
 const {
     getIngredient,
+    getAllIngredients,
     createIngredient,
     getExpiredIngredients,
     updateIngredient,
@@ -46,16 +50,20 @@ module.exports = {
     deleteCustomer,
     customersInStateOf,
     getBatch,
+    getAllBatches,
     createBatch,
     getOrder,
+    getAllOrders,
     createOrder,
     getActiveOrders,
     getMeal,
+    getAllMeals,
     createMeal,
     getPopularMeals,
     updateBatch,
     deleteBatch,
     getIngredient,
+    getAllIngredients,
     createIngredient,
     getExpiredIngredients,
     updateMeal,
