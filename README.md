@@ -10,7 +10,7 @@ node app.js
 
 ## Navigation
 
-Simply enter the corresponding option from the lsit of options that are being displayed.
+Simply enter the corresponding option from the list of options that are being displayed.
 
 ```
 1) CRUD Menu
