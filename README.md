@@ -33,6 +33,6 @@ Some options are the API functions that interact with our database.
 select an option: 
 ```
 
-## Recieving Output
+## Receiving Output
 
 Due to the nature of asynchornous calls to our database being within a continous loop, the output of the query won't be displayed until you have exited all the menus using "Quit".
